@@ -1,14 +1,17 @@
-from django.shortcuts import render
 from rest_framework import generics
 
 from nsApp.models import Author, Book
 from nsApp.serializers import AuthorSerializer, BookSerializer
+# from rest_framework.authentication import BasicAuthentication
+# from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
 
 # Create your views here.
 class AuthorListView(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    # authentication_classes = [BasicAuthentication]
+    # permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 
 class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
